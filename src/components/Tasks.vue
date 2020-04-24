@@ -1,0 +1,118 @@
+<template>
+  <div style="height: 100%;">
+    <v-card style="height: 100%; overflow: hidden;">
+      <v-toolbar color="blue" dark>
+        <v-toolbar-title>
+          Title of the list {{ listId }}
+        </v-toolbar-title>
+        <v-spacer />
+        <v-btn icon>
+          <v-icon>search</v-icon>
+        </v-btn>
+      </v-toolbar>
+
+      <v-list two-line max-height="calc(100% - 128px);" class="overflow-y-auto">
+        <template v-for="(task, key) in tasks">
+          <Task v-bind:key="key" :task="task" :index="key" />
+        </template>
+      </v-list>
+      <v-divider />
+      <v-card-actions>
+        <v-layout>
+          <v-flex>
+            <NewTask />
+          </v-flex>
+        </v-layout>
+      </v-card-actions>
+    </v-card>
+    <router-view name="notes" :key="$router.fullPath" />
+  </div>
+</template>
+
+<script>
+import Task from "./Task";
+import NewTask from "./NewTask";
+
+export default {
+  name: 'tasks',
+  components: {
+    Task,
+    NewTask,
+  },
+  data: () => ({
+    tasks: [
+      {
+        id: 1,
+        title: "Task title",
+        sub_title: "Contains something",
+        isComplete: true
+      },
+      {
+        id: 2,
+        title: "Task title",
+        sub_title: "Contains something",
+        isComplete: false
+      },
+      {
+        id: 3,
+        title: "Task title",
+        sub_title: "Contains something",
+        isComplete: true
+      },
+      {
+        id: 4,
+        title: "Task title",
+        sub_title: "Contains something",
+        isComplete: true
+      },
+      {
+        id: 5,
+        title: "Task title",
+        sub_title: "Contains something",
+        isComplete: true
+      },
+      {
+        id: 6,
+        title: "Task title",
+        sub_title: "Contains something",
+        isComplete: true
+      },
+      {
+        id: 7,
+        title: "Task title",
+        sub_title: "Contains something",
+        isComplete: true
+      },
+      {
+        id: 8,
+        title: "Task title",
+        sub_title: "Contains something",
+        isComplete: true
+      },
+      {
+        id: 9,
+        title: "Task title",
+        sub_title: "Contains something",
+        isComplete: true
+      },
+      {
+        id: 10,
+        title: "Task title",
+        sub_title: "Contains something",
+        isComplete: true
+      },
+      {
+        id: 11,
+        title: "Task title",
+        sub_title: "Contains something",
+        isComplete: true
+      },
+    ]
+  }),
+  computed: {
+    listId() {
+      return this.$route.params.id;
+    }
+  }
+}
+</script>
